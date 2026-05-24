@@ -1,29 +1,231 @@
-# Maven
-target/
 
-# IntelliJ
-.idea/
-*.iml
 
-# VS Code
-.vscode/
+# Eclipse Workspace Metadata
+.metadata/
 
-# Logs
-*.log
+# SonarLint
+.sonarlint/
 
-# OS files
+# STS Cache
+.sts4-cache/
+
+
+# =========================================================
+# GENERAL
+# =========================================================
 .DS_Store
 Thumbs.db
+desktop.ini
 
-# Environment
+# =========================================================
+# JAVA
+# =========================================================
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+*.zip
+*.tar.gz
+*.rar
+
+# JVM crash logs
+hs_err_pid*
+replay_pid*
+
+# =========================================================
+# MAVEN
+# =========================================================
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+
+# Maven Wrapper
+.mvn/wrapper/maven-wrapper.jar
+
+# =========================================================
+# GRADLE
+# =========================================================
+.gradle/
+build/
+
+# =========================================================
+# SPRING BOOT
+# =========================================================
+logs/
+*.log
+spring.log
+
+# Temporary Spring files
+*.tmp
+*.bak
+
+# =========================================================
+# APPLICATION CONFIGS
+# =========================================================
+# Local secrets
+application-local.properties
+application-secret.properties
+application-prod.properties
+
+# YAML secrets
+application-local.yml
+application-secret.yml
+application-prod.yml
+
+# Environment files
 .env
+.env.*
+!.env.example
+
+# =========================================================
+# DATABASE FILES
+# =========================================================
+*.db
+*.sqlite
+*.sqlite3
+*.h2.db
+
+# =========================================================
+# AWS / CLOUD / DEVOPS
+# =========================================================
 
 # AWS Keys
 *.pem
+*.key
 
-# Build files
-*.jar
-*.war
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+terraform.tfvars
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraform.lock.hcl
 
-# Java
-*.class
+# Kubernetes
+kubeconfig
+*.kubeconfig
+
+# Docker
+docker-data/
+*.pid
+
+# =========================================================
+# IDE - INTELLIJ
+# =========================================================
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# =========================================================
+# IDE - ECLIPSE / STS
+# =========================================================
+.project
+.classpath
+.settings/
+.springBeans
+.sts4-cache/
+
+# =========================================================
+# IDE - VS CODE
+# =========================================================
+.vscode/
+
+# =========================================================
+# NODE / FRONTEND
+# =========================================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+dist/
+coverage/
+
+# =========================================================
+# REACT / ANGULAR / VUE
+# =========================================================
+.angular/
+.next/
+.nuxt/
+
+# =========================================================
+# TESTING / REPORTS
+# =========================================================
+surefire-reports/
+failsafe-reports/
+test-output/
+coverage/
+jacoco.exec
+
+# =========================================================
+# OS GENERATED FILES
+# =========================================================
+ehthumbs.db
+Icon?
+._*
+
+# =========================================================
+# SECURITY / SECRETS
+# =========================================================
+secrets/
+credentials/
+*.p12
+*.jks
+*.keystore
+
+# Firebase
+google-services.json
+firebase-service-account.json
+
+# =========================================================
+# CACHE
+# =========================================================
+.cache/
+tmp/
+temp/
+
+# =========================================================
+# PYTHON (future scripting support)
+# =========================================================
+__pycache__/
+*.pyc
+venv/
+.envrc
+
+# =========================================================
+# DOCKER
+# =========================================================
+docker-compose.override.yml
+
+# =========================================================
+# KUBERNETES
+# =========================================================
+*.kubeconfig
+
+# =========================================================
+# CI/CD
+# =========================================================
+*.swp
+*.swo
+
+# =========================================================
+# GENERATED FILES
+# =========================================================
+generated/
+bin/
+
+# =========================================================
+# OPTIONAL: KEEP SAMPLE CONFIGS
+# =========================================================
+!application-example.properties
+!application-example.yml
