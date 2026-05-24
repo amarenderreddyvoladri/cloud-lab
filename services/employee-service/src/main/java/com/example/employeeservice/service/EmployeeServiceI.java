@@ -1,0 +1,25 @@
+package com.example.employeeservice.service;
+
+import java.util.List;
+
+import com.example.employeeservice.dto.EmployeeRequestDTO;
+import com.example.employeeservice.dto.EmployeeResponseDTO;
+
+
+public interface EmployeeServiceI {
+
+	EmployeeResponseDTO create(EmployeeRequestDTO dto);
+
+	List<EmployeeResponseDTO> getAll();
+
+	EmployeeResponseDTO getById(Long id);
+
+	EmployeeResponseDTO update(Long id, EmployeeRequestDTO dto);
+
+	void delete(Long id);
+
+	EmployeeResponseDTO getByEmail(String email);
+
+	List<EmployeeResponseDTO> getByDepartment(String department);
+
+}

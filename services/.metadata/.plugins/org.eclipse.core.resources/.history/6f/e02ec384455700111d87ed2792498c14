@@ -1,0 +1,93 @@
+package com.example.employee_service.service;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.stereotype.Service;
+
+import com.example.employee_service.dto.EmployeeMapper;
+import com.example.employee_service.dto.EmployeeRequestDTO;
+import com.example.employee_service.dto.EmployeeResponseDTO;
+import com.example.employee_service.entity.Employee;
+import com.example.employee_service.exceptions.EmployeeNotFoundException;
+import com.example.employee_service.repo.EmployeeRepository;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@Service
+public class EmployeeServiceImpl implements EmployeeServiceI {
+
+    private final EmployeeRepository repository;
+
+    public EmployeeServiceImpl(EmployeeRepository repository) {
+        this.repository = repository;
+    }
+
+    @Override
+    public EmployeeResponseDTO create(EmployeeRequestDTO dto) {
+        Employee saved = repository.save(EmployeeMapper.toEntity(dto));
+        log.info("Creating employee: {}", dto.getEmail());
+        return EmployeeMapper.toDTO(saved);
+    }
+
+    @Override
+    public List<EmployeeResponseDTO> getAll() {
+        return repository.findAll()
+                .stream()
+                .map(EmployeeMapper::toDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public EmployeeResponseDTO getById(Long id) {
+        Employee emp = repository.findById(id)
+                .orElseThrow(() -> new EmployeeNotFoundException("Employee not found: " + id));
+        log.info("Fetching employee by id: {}", id);
+
+        return EmployeeMapper.toDTO(emp);
+    }
+
+    @Override
+    public EmployeeResponseDTO update(Long id, EmployeeRequestDTO dto) {
+
+        Employee emp = repository.findById(id)
+                .orElseThrow(() -> new EmployeeNotFoundException("Employee not found: " + id));
+
+        emp.setName(dto.getName());
+        emp.setEmail(dto.getEmail());
+        emp.setDepartment(dto.getDepartment());
+        emp.setSalary(dto.getSalary());
+
+        return EmployeeMapper.toDTO(repository.save(emp));
+    }
+
+    @Override
+    public void delete(Long id) {
+        Employee emp = repository.findById(id)
+                .orElseThrow(() -> new EmployeeNotFoundException("Employee not found: " + id));
+
+        repository.delete(emp);
+    }
+
+    @Override
+    public EmployeeResponseDTO getByEmail(String email) {
+        Employee emp = repository.findByEmail(email)
+                .orElseThrow(() -> new EmployeeNotFoundException("Employee not found: " + email));
+
+        return EmployeeMapper.toDTO(emp);
+    }
+
+    @Override
+    public List<EmployeeResponseDTO> getByDepartment(String department) {
+        List<Employee> list = repository.findByDepartment(department);
+
+        if (list.isEmpty()) {
+            throw new EmployeeNotFoundException("No employees in department: " + department);
+        }
+
+        return list.stream()
+                .map(EmployeeMapper::toDTO)
+                .collect(Collectors.toList());
+    }
+}

@@ -1,0 +1,29 @@
+# Maven
+target/
+
+# IntelliJ
+.idea/
+*.iml
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+
+# AWS Keys
+*.pem
+
+# Build files
+*.jar
+*.war
+
+# Java
+*.class
