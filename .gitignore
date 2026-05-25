@@ -72,6 +72,8 @@ spring.log
 application-local.properties
 application-secret.properties
 application-prod.properties
+application-docker.properties
+
 
 # YAML secrets
 application-local.yml
